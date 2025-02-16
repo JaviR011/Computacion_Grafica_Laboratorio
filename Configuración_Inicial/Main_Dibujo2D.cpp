@@ -126,7 +126,7 @@ int main() {
         //glDrawArrays(GL_LINES,1,3);
         //glDrawArrays(GL_LINE_LOOP,0,4);
         
-        glDrawArrays(GL_TRIANGLES,1,3);
+        //glDrawArrays(GL_TRIANGLES,1,3);
         glDrawElements(GL_TRIANGLES, 3,GL_UNSIGNED_INT,0);
 
         
