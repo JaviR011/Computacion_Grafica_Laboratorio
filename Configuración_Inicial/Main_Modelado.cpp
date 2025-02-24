@@ -226,10 +226,11 @@ int main() {
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.4f, 1.0f, 0.1f));
-		model = glm::translate(model, glm::vec3(-1.0f, -5.5f, 10.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 1.0f, 0.2f));
+		model = glm::translate(model, glm::vec3(-1.0f, -1.9f, 10.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
+
 		//tentaculo frente derecho
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 1.3f));
