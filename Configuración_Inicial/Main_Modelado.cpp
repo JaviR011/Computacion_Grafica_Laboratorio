@@ -82,19 +82,19 @@ int main() {
 
 	// use with Perspective Projection
 	float vertices[] = {
-		-0.5f, -0.5f, 0.5f, 1.0f, 0.0f,0.0f,//Front
-		0.5f, -0.5f, 0.5f,  1.0f, 0.0f,0.0f,
-		0.5f,  0.5f, 0.5f,  1.0f, 0.0f,0.0f,
-		0.5f,  0.5f, 0.5f,  1.0f, 0.0f,0.0f,
-		-0.5f,  0.5f, 0.5f, 1.0f, 0.0f,0.0f,
-		-0.5f, -0.5f, 0.5f, 1.0f, 0.0f,0.0f,
+		-0.5f, -0.5f, 0.5f, 0.9725f, 0.4117f,0.5490f,//Front
+		0.5f, -0.5f, 0.5f,  0.9725f, 0.4117f,0.5490f,
+		0.5f,  0.5f, 0.5f, 0.9725f, 0.4117f,0.5490f,
+		0.5f,  0.5f, 0.5f,  0.9725f, 0.4117f,0.5490f,
+		-0.5f,  0.5f, 0.5f, 0.9725f, 0.4117f,0.5490f,
+		-0.5f, -0.5f, 0.5f, 0.9725f, 0.4117f,0.5490f,
 		
-	    -0.5f, -0.5f,-0.5f, 0.0f, 1.0f,0.0f,//Back
-		 0.5f, -0.5f,-0.5f, 0.0f, 1.0f,0.0f,
-		 0.5f,  0.5f,-0.5f, 0.0f, 1.0f,0.0f,
-		 0.5f,  0.5f,-0.5f, 0.0f, 1.0f,0.0f,
-	    -0.5f,  0.5f,-0.5f, 0.0f, 1.0f,0.0f,
-	    -0.5f, -0.5f,-0.5f, 0.0f, 1.0f,0.0f,
+	    -0.5f, -0.5f,-0.5f,0.9725f, 0.4117f,0.5490f,//Back
+		 0.5f, -0.5f,-0.5f, 0.9725f, 0.4117f,0.5490f,
+		 0.5f,  0.5f,-0.5f, 0.9725f, 0.4117f,0.5490f,
+		 0.5f,  0.5f,-0.5f, 0.9725f, 0.4117f,0.5490f,
+	    -0.5f,  0.5f,-0.5f, 0.9725f, 0.4117f,0.5490f,
+	    -0.5f, -0.5f,-0.5f,0.9725f, 0.4117f,0.5490f,
 		
 		 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,1.0f,
 		 0.5f, -0.5f, -0.5f,  0.0f, 0.0f,1.0f,
@@ -199,39 +199,39 @@ int main() {
 
 
 
-		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(3.0f, 0.1f, 2.0f));
-		model = glm::translate(model, glm::vec3(0.0f, 0.6f, 0.0f));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+		//model = glm::mat4(1.0f);
+		//model = glm::scale(model, glm::vec3(3.0f, 0.1f, 2.0f));
+		//model = glm::translate(model, glm::vec3(0.0f, 0.6f, 0.0f));
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//glDrawArrays(GL_TRIANGLES, 0, 36);
 
-		// Pata 1
-		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 0.1f));
-		model = glm::translate(model, glm::vec3(12.0f, -0.5f, 8.0f));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);
-		
-		// Pata 2 
-		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 0.1f));
-		model = glm::translate(model, glm::vec3(-12.0f, -0.5f, 8.0f));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+		//// Pata 1
+		//model = glm::mat4(1.0f);
+		//model = glm::scale(model, glm::vec3(0.1f, 1.0f, 0.1f));
+		//model = glm::translate(model, glm::vec3(12.0f, -0.5f, 8.0f));
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//glDrawArrays(GL_TRIANGLES, 0, 36);
+		//
+		//// Pata 2 
+		//model = glm::mat4(1.0f);
+		//model = glm::scale(model, glm::vec3(0.1f, 1.0f, 0.1f));
+		//model = glm::translate(model, glm::vec3(-12.0f, -0.5f, 8.0f));
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//glDrawArrays(GL_TRIANGLES, 0, 36);
 
-		// Pata 3 
-		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 0.1f));
-		model = glm::translate(model, glm::vec3(-12.0f, -0.5f, -8.0f));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+		//// Pata 3 
+		//model = glm::mat4(1.0f);
+		//model = glm::scale(model, glm::vec3(0.1f, 1.0f, 0.1f));
+		//model = glm::translate(model, glm::vec3(-12.0f, -0.5f, -8.0f));
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//glDrawArrays(GL_TRIANGLES, 0, 36);
 
-		// Pata 4 
-		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 0.1f));
-		model = glm::translate(model, glm::vec3(12.0f, -0.5f, -8.0f));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+		//// Pata 4 
+		//model = glm::mat4(1.0f);
+		//model = glm::scale(model, glm::vec3(0.1f, 1.0f, 0.1f));
+		//model = glm::translate(model, glm::vec3(12.0f, -0.5f, -8.0f));
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		glBindVertexArray(0);
 		glfwSwapBuffers(window);
