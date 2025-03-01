@@ -590,7 +590,6 @@ int main() {
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
-
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(3.0f, 2.0f, 1.5f));
 		model = glm::translate(model, glm::vec3(0.0f, 0.25f, -1.0f));
@@ -602,10 +601,7 @@ int main() {
 		model = glm::translate(model, glm::vec3(0.0f, -0.5f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
-
-
-		
-		
+				
 		// tetaculo frente izquierdo
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 1.3f));
@@ -749,7 +745,7 @@ int main() {
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 	
-
+//
 
 
 		//Partes blancas
@@ -774,8 +770,6 @@ int main() {
 
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
-		//dientes
-
 		//venda patita
 
 		model = glm::mat4(1.0f);
@@ -790,7 +784,7 @@ int main() {
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
-
+//
 		////partes negras
 		glBindVertexArray(VAO_Negro);
 		model = glm::mat4(1.0f);
@@ -827,14 +821,13 @@ int main() {
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 
-		glBindVertexArray(VAO_Negro);
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(0.25f, 2.0f, 0.25f));  // Tamaño del cubo
 		model = glm::translate(model, glm::vec3(-7.0f, 0.25f, 0.0f)); // Posición del cubo en la escena
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
-		glBindVertexArray(VAO_Negro);
+
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(0.25f, 2.0f, 0.25f));  // Tamaño del cubo
 		model = glm::translate(model, glm::vec3(7.0f, 0.25f, 0.0f)); // Posición del cubo en la escena
@@ -850,7 +843,7 @@ int main() {
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // Posición del cubo en la escena
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
-
+//
 		////partes naranjas
 		
 		glBindVertexArray(VAO_naranja);
