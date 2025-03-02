@@ -426,6 +426,8 @@ int main() {
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindVertexArray(0); // Unbind VAO (it's always a good thing to unbind any buffer/array to prevent strange bugs)
 
+		// Declaración de VAOs y VBOs para los diferentes colores
+
 	// blanco
 	GLuint VBO_B, VAO_B;
 	glGenVertexArrays(1, &VAO_B);
@@ -499,9 +501,6 @@ int main() {
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 
-	// Declaración de VAOs y VBOs para los diferentes colores
-
-	
 	
 
 	
@@ -743,9 +742,6 @@ int main() {
 		model = glm::translate(model, glm::vec3(1.0f, -12.3f, -5.5f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
-
-	
-//
 
 
 		//Partes blancas
@@ -1015,11 +1011,11 @@ int main() {
 	glDeleteVertexArrays(1, &VAO_B);
 	glDeleteBuffers(1, &VBO_B);
 
-	glDeleteVertexArrays(1, &VAO_verde);
-	glDeleteBuffers(1, &VBO_verde);
-
 	glDeleteVertexArrays(1, &VAO_rojo);
 	glDeleteBuffers(1, &VBO_rojo);
+
+	glDeleteVertexArrays(1, &VAO_verde);
+	glDeleteBuffers(1, &VBO_verde);
 
 	glDeleteVertexArrays(1, &VAO_naranja);
 	glDeleteBuffers(1, &VBO_naranja);
