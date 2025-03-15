@@ -1,0 +1,9 @@
+# exported by https://3dviewer.net
+newmtl Snow_Golem
+Kd 1 1 1
+d 1
+map_Kd Binary_0.png
+newmtl 02_-_Default
+Kd 1 1 1
+d 1
+map_Kd Binary_1.png

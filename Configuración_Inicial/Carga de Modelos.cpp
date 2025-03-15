@@ -1,9 +1,9 @@
 
 /*
-Carga de modelos
+Practica 6
 Rodriguez Garcia Javier Antonio
 319277485
-Fecha de entrega: 09/03/2025
+Fecha de entrega: 14/03/2025
 */
 
 // Std. Includes
@@ -30,7 +30,7 @@ Fecha de entrega: 09/03/2025
 #include "stb_image.h"
 
 // Properties
-const GLuint WIDTH = 800, HEIGHT = 600;
+const GLuint WIDTH = 1400, HEIGHT = 800;
 int SCREEN_WIDTH, SCREEN_HEIGHT;
 
 // Function prototypes
@@ -42,7 +42,7 @@ void DoMovement( );
 // Camera
 Camera camera( glm::vec3( 0.0f, 0.0f, 3.0f ) );
 bool keys[1024];
-GLfloat lastX = 400, lastY = 300;
+GLfloat lastX = 600, lastY = 500;
 bool firstMouse = true;
 
 GLfloat deltaTime = 0.0f;
@@ -62,7 +62,7 @@ int main( )
     glfwWindowHint( GLFW_RESIZABLE, GL_FALSE );
     
     // Create a GLFWwindow object that we can use for GLFW's functions
-    GLFWwindow *window = glfwCreateWindow( WIDTH, HEIGHT, "Carga de modelos y camara sintetica, Javier Rodriguez, 319277485, 09/03/25", nullptr, nullptr );
+    GLFWwindow *window = glfwCreateWindow( WIDTH, HEIGHT, "Practica 6, Javier Rodriguez, 319277485, 14/03/25", nullptr, nullptr );
     
     if ( nullptr == window )
     {
@@ -103,6 +103,12 @@ int main( )
     
     // Load models
     Model dog((char*)"Models/RedDog.obj");
+    Model mapa((char*)"Models/mapa/model.obj");
+    Model Gasth((char*)"Models/Gast/model.obj");
+    Model creeper((char*)"Models/creeper/model.obj");
+    Model SnowGolem((char*)"Models/SnowGolem/model.obj");
+    Model Enderman((char*)"Models/Enderman/model.obj");
+    Model Blaze((char*)"Models/blaze/model.obj");
     glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
     
   
@@ -131,17 +137,40 @@ int main( )
 
         // Draw the loaded model
         glm::mat4 model(1);
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        dog.Draw(shader);
-        model = glm::translate(model, glm::vec3(3.0f, 0.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        dog.Draw(shader);
-        model = glm::translate(model, glm::vec3(-3.0f, 0.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+
+      
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         dog.Draw(shader);
 
+        model = glm::translate(model, glm::vec3(0.0f, -16.5f, 0.0f));
+        model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        mapa.Draw(shader);
+
+        model = glm::translate(model, glm::vec3(0.0f, 18.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        Gasth.Draw(shader);
+
+        model = glm::translate(model, glm::vec3(-12.0f, -30.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        Enderman.Draw(shader);
+
+        model = glm::translate(model, glm::vec3(15.0f, -30.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        Blaze.Draw(shader);
+
+        model = glm::translate(model, glm::vec3(32.0f, 0.0f,0.0f));
+        model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        SnowGolem.Draw(shader);
+
+        model = glm::translate(model, glm::vec3(33.0f, 0.0f, 13.0f));
+        model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        creeper.Draw(shader);
         // Swap the buffers
         glfwSwapBuffers( window );
     }
