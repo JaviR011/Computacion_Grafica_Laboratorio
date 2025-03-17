@@ -26,12 +26,12 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Carga de Modelos.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Shader\modelLoading.frag" />
     <None Include="Shader\modelLoading.vs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Texturizado.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
