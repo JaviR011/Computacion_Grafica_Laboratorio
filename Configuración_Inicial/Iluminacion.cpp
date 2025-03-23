@@ -253,10 +253,10 @@ int main()
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
 
-        
 
-       // glDrawArrays(GL_TRIANGLES, 0, 36);
-        //red_dog.Draw(lightingShader);
+
+        // glDrawArrays(GL_TRIANGLES, 0, 36);
+         //red_dog.Draw(lightingShader);
         creeper.Draw(lightingShader);
         glBindVertexArray(0);
 
@@ -340,13 +340,13 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
 
     if (keys[GLFW_KEY_O])
     {
-       
+
         movelightPos += 0.1f;
     }
 
     if (keys[GLFW_KEY_L])
     {
-        
+
         movelightPos -= 0.1f;
     }
 
