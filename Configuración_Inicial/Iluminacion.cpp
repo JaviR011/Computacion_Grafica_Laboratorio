@@ -1,8 +1,8 @@
 /*
-Materiales e iluminación
+Practica 8
 Rodriguez Garcia Javier Antonio
 319277485
-Fecha de entrega: 23/03/2025
+Fecha de entrega: 28/03/2025
 */
 
 
@@ -49,7 +49,7 @@ bool firstMouse = true;
 
 // Light attributes
 glm::vec3 lightPos(0.0f, 0.0f, 5.0f);
-glm::vec3 lightPos2(0.0f, 0.0f, 5.0f);
+glm::vec3 lightPos2(0.0f, 0.1f, 5.0f);
 float movelightPos = 0.0f;
 GLfloat deltaTime = 0.0f;
 GLfloat lastFrame = 0.0f;
@@ -68,7 +68,7 @@ int main()
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
     // Create a GLFWwindow object that we can use for GLFW's functions
-    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Materiales e Iluminacion, Javier Rodriguez, 23/03/2025, 319277485", nullptr, nullptr);
+    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Practica 8, Javier Rodriguez, 28  /03/2025, 319277485", nullptr, nullptr);
 
     if (nullptr == window)
     {
@@ -322,7 +322,7 @@ int main()
             glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
             glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
             model = glm::mat4(1.0f);
-            model = glm::translate(model, lightPos2);
+            model = glm::translate(model, glm::vec3(lightPos2.x, lightPos2.y, lightPos2.z));
             model = glm::scale(model, glm::vec3(0.003f));
             glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
             glBindVertexArray(VAO);
@@ -335,7 +335,7 @@ int main()
             glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
             glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
             model = glm::mat4(1.0f);
-            model = glm::translate(model, lightPos2);
+            model = glm::translate(model, glm::vec3(lightPos2.x, lightPos2.y, lightPos2.z));
             model = glm::scale(model, glm::vec3(0.0003f));
             glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
             glBindVertexArray(VAO);
@@ -411,24 +411,24 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
 
     if (keys[GLFW_KEY_O])
     {
-        if (lightPos2.z <= 5.0 || lightPos2.z >=0.0) {
+        if (lightPos2.z > 0.0 ) {
             lightPos2.z -= 0.1;
-            lightPos2.y += 0.5;
+            lightPos2.y += 0.1;
         }
-        if (lightPos2.z >= -5.0 || lightPos2.z < 0.0) {
+        if (lightPos2.z < 0.0) {
             lightPos2.z -= 0.1;
-            lightPos2.y -= 0.5;
+            lightPos2.y -= 0.1;
         }
     }
 
     if (keys[GLFW_KEY_L])
     {
 
-        if (lightPos2.z <= 5.0 || lightPos2.z >= 0.0) {
+        if (lightPos2.z > 0.0) {
             lightPos2.z += 0.1;
-            lightPos2.y -= 0.5;
+            lightPos2.y -= 0.1;
         }
-        if (lightPos2.z >= -5.0 || lightPos2.z < 0.0) {
+        if (lightPos2.z < 0.0) {
             lightPos2.z += 0.1;
             lightPos2.y += 0.1;
         }
