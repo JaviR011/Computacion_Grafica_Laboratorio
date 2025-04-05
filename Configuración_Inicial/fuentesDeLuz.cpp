@@ -1,8 +1,8 @@
 /*
-Fuentes de Luz
+Practica 9
 Rodriguez Garcia Javier Antonio
 319277485
-Fecha de entrega: 30/03/2025
+Fecha de entrega: 04/04/2025
 */
 
 
@@ -55,6 +55,7 @@ int luz1 = 0;
 int luz2 = 0;
 int luz3 = 0;
 int luz4 = 0;
+int cont = 0;
 // Positions of the point lights
 glm::vec3 pointLightPositions[] = {
 	glm::vec3(0.43f,0.25f,1.6f),
@@ -128,13 +129,13 @@ int main()
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);*/
 
 	// Create a GLFWwindow object that we can use for GLFW's functions
-	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Fuentes de luz, Javier Rodriguez, 30/03/2025, 319277485 ", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Practica 9, Javier Rodriguez, 04 / 04 / 2025, 319277485 ", nullptr, nullptr);
 
 	if (nullptr == window)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
 		glfwTerminate();
-
+			
 		return EXIT_FAILURE;
 	}
 
@@ -441,15 +442,15 @@ int main()
 		glBindVertexArray(VAO);
 		Moon.Draw(lightingShader);
 		// Draw the light object (using light's vertex attributes)
-		for (GLuint i = 3; i < 4; i++)
-		{
-			model = glm::mat4(1);
-			model = glm::translate(model, pointLightPositions[i]);
-			model = glm::scale(model, glm::vec3(0.02f)); // Make it a smaller cube
-			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-			glBindVertexArray(VAO);
-			glDrawArrays(GL_TRIANGLES, 0, 36);
-		}
+		//for (GLuint i = 3; i < 4; i++)
+		//{
+		//	model = glm::mat4(1);
+		//	model = glm::translate(model, pointLightPositions[i]);
+		//	model = glm::scale(model, glm::vec3(0.02f)); // Make it a smaller cube
+		//	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//	glBindVertexArray(VAO);
+		//	glDrawArrays(GL_TRIANGLES, 0, 36);
+		//}
 		glBindVertexArray(0);
 
 
@@ -555,32 +556,48 @@ void DoMovement()
 	if (keys[GLFW_KEY_6]) {
 		luz3 = 1;
 	}
-	if (keys[GLFW_KEY_0]) {
-		printf("[%f,%f,%f]" ,pointLightPositions[2].x , pointLightPositions[2].y, pointLightPositions[2].z);
-	}
+	
 	if (keys[GLFW_KEY_O])
 	{
-		if (lightPos.z >= 0.0) {
-			lightPos.z -= 0.1;
-			lightPos.y += 0.1;
-		}
-		if (lightPos.z < 0.0) {
-			lightPos.z -= 0.1;
-			lightPos.y -= 0.1;
-		}
-	}
 
-	if (keys[GLFW_KEY_L])
-	{
+		if (lightPos.z == 5.0 && lightPos.y >=0) {
+			if (flag == 0) {
+				flag = 1;
+			}
+			else {
+				flag = 0;
+			}
+			cont = 0;
+		}
+		if (lightPos.y >= 0) {
+			if (lightPos.z >= 0.0) {
+				lightPos.z -= 0.1;
+				lightPos.y += 0.1;
 
-		if (lightPos.z >= 0.0) {
-			lightPos.z += 0.1;
-			lightPos.y -= 0.1;
+			}
+			if (lightPos.z < 0.0 ) {
+				lightPos.z -= 0.1;
+				lightPos.y -= 0.1;
+
+			}
 		}
-		if (lightPos.z < 0.0) {
-			lightPos.z += 0.1;
-			lightPos.y += 0.1;
+		
+		
+		if (lightPos.y < 0) {
+
+			if (lightPos.z < 0.0) {
+				lightPos.z += 0.1;
+				lightPos.y -= 0.1;
+				
+			}
+			if (lightPos.z >= 0.0) {
+				lightPos.z += 0.1;
+				lightPos.y += 0.1;
+				
+			}
 		}
+
+		
 	}
 
 	if (keys[GLFW_KEY_X])
