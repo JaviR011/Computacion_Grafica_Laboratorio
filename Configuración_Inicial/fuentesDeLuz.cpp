@@ -582,7 +582,6 @@ void DoMovement()
 			}
 		}
 		
-		
 		if (lightPos.y < 0) {
 
 			if (lightPos.z < 0.0) {
