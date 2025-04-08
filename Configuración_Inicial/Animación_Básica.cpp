@@ -106,8 +106,10 @@ float vertices[] = {
 
 glm::vec3 Light1 = glm::vec3(0);
 //Anim
-float rotBall = -215;
+float rotBall = 100;
 bool AnimBall = false;
+float salto = 0.0f;
+float rot = 0.0f;
 
 
 // Deltatime
@@ -212,7 +214,8 @@ int main()
 	   
 		// OpenGL options
 		glEnable(GL_DEPTH_TEST);
-
+		glm::mat4 modelTemp = glm::mat4(1.0f); //Temp
+		glm::mat4 modelTemp1 = glm::mat4(1.0f); //Temp
 		
 		
 		
@@ -292,18 +295,27 @@ int main()
 		Piso.Draw(lightingShader);
 
 		model = glm::mat4(1);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -0.5f));
+
+
+
+		modelTemp = model=glm::translate(model, glm::vec3(0.0f, salto/2, 0.0f));
+		modelTemp = glm::rotate(modelTemp, glm::radians(rotBall), glm::vec3(0.0f, -1.0f, 0.0f));
+		model = glm::translate(modelTemp, glm::vec3(2.0f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians((23*salto)+rot*20), glm::vec3(1.0f, 0.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1i(glGetUniformLocation(lightingShader.Program, "transparency"), 0);
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Dog.Draw(lightingShader);
+		glBindVertexArray(0);
 
 		model = glm::mat4(1);
 		glEnable(GL_BLEND);//Avtiva la funcionalidad para trabajar el canal alfa
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1i(glGetUniformLocation(lightingShader.Program, "transparency"), 1);
-		model = glm::translate(model, glm::vec3(0.0f, 0.8f, 0.2f));
-		model = glm::rotate(model, glm::radians(rotBall), glm::vec3(1.0f, 0.0f, 0.0f));
+		modelTemp = model =glm::translate(model, glm::vec3(0.0f, (-salto) + 1.5f, 0.0f));
+		modelTemp = glm::rotate(modelTemp, glm::radians(rotBall+30), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(modelTemp, glm::vec3(2.0f, 0.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 	    Ball.Draw(lightingShader); 
 		glDisable(GL_BLEND);  //Desactiva el canal alfa 
@@ -331,7 +343,7 @@ int main()
 			model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
 			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 			glBindVertexArray(VAO);
-			glDrawArrays(GL_TRIANGLES, 0, 36);
+			//glDrawArrays(GL_TRIANGLES, 0, 36);
 		
 		glBindVertexArray(0);
 
@@ -453,8 +465,42 @@ void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
 void Animation() {
 	if (AnimBall)
 	{
-		rotBall -= 1.0f;
+		rotBall += 0.85f;
 		printf("%f", rotBall);
+
+		if (rotBall >= 360) {
+			rotBall = 0;
+		}
+		//180
+		if (rotBall >= 120 && rotBall <150) {
+			rot -= 0.1;
+		}else if(rotBall >= 150&& rotBall < 165){
+			rot += 0.2;
+		}
+		else if (rotBall >=  300 && rotBall < 330) {
+			rot -= 0.1;
+		}else if(rotBall >= 330 && rotBall < 345){
+			rot += 0.2;
+		}
+		else {
+			rot = 0;
+		}
+		if (rotBall >= 160 && rotBall <= 180) {
+			salto += 0.05;
+		}
+		else if (rotBall > 180 && rotBall <= 200) {
+			salto -= 0.05;
+		}
+		
+		else if (rotBall > 340) {
+			salto += 0.05;
+		}
+		else if (rotBall >= 0 && rotBall <= 20) {
+			salto -= 0.05;
+		}
+		else {
+			salto = 0;
+		}
 	}
 	else
 	{
