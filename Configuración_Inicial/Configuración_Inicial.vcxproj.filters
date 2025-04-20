@@ -32,7 +32,7 @@
     <None Include="Shader\lighting.vs" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Animación_Básica.cpp">
+    <ClCompile Include="Maquina de estados.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
