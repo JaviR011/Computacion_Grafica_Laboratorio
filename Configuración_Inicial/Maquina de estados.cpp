@@ -1,8 +1,9 @@
 /*
-Maquina de estados
+Practica 11
 Rodriguez Garcia Javier Antonio
 319277485
-Fecha de entrega: 20/04/2025
+Fecha de entrega: 25
+25/04/2025
 */
 
 #include <iostream>
@@ -138,7 +139,7 @@ int main()
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);*/
 
 	// Create a GLFWwindow object that we can use for GLFW's functions
-	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Animacion maquina de estados  Javier Rodriguez 319277485 20/04/2025", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Practica 11  Javier Rodriguez 319277485 25/04/2025", nullptr, nullptr);
 
 	if (nullptr == window)
 	{
@@ -527,31 +528,54 @@ void Animation() {
 	}
 	if (dogAnim == 1) { //Walk Animation
 		if (!step) {     //State 1
-			RLegs += 0.3f;
-			FLegs += 0.3f;
-			head += 0.3f;
-			tail += 0.3f;
+			RLegs += 0.6f;
+			FLegs += 0.6f;
+			head += 0.6f;
+			tail += 0.6f;
 
 			if (RLegs > 15.0f) //Condition
 				step = true;
 		}
 		else {
-			RLegs -= 0.3f;
-			FLegs -= 0.3f;
-			head -= 0.3f;
-			tail -= 0.3f;
+			RLegs -= 0.6f;
+			FLegs -= 0.6f;
+			head -= 0.6f;
+			tail -= 0.6f;
 
 			if (RLegs < -15.0f) //Condition
 				step = false;
 		}
 
 		
-		if (dogPos.z<2) {
-			printf("%f", dogPos.z);
-			dogPos.z += 0.001f;
+		if (dogPos.z<2 && dogRot ==0) {
+			dogPos.z += 0.01f;
+		}
+		else if (dogRot < 90) {
+				dogRot += 1;
+		}
+		else if (dogPos.z >=2 && dogPos.x <2 && dogRot>=90) {
+			dogPos.x += 0.01;
+		}
+		else if (dogRot < 180) {
+
+				dogRot += 1;
+		}
+		else if (dogPos.z>=-2 && dogPos.x >=2 && dogRot >=180) {
+			dogPos.z -= 0.01;
+		}
+		else if (dogRot <315 ) {
+				dogRot += 1;
+		}
+		else if(dogPos.z < 0 && dogPos.x > 0){
+			dogPos.z += 0.01f;
+			dogPos.x -= 0.01f;
+		}
+		else if (dogRot < 360) {
+			dogRot += 1;
 		}
 		else {
 			dogAnim = 0;
+		
 		}
 	}
 
